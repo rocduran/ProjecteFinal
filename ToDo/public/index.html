@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="ToDoList">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ToDo MEAN</title>
+    <link rel="stylesheet" href="/js/vendor/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/js/vendor/bootstrap/dist/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="/css/app.css">
+
+    <script src="/js/vendor/angular/angular.min.js"></script>
+    <script src="/js/vendor/angular-animate/angular-animate.min.js"></script>
+    <script src="/js/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="/js/vendor/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/js/app/app.js"></script>
+    <script src="/js/app/controllers.js"></script>
+
+  </head>
+  <body ng-controller="MainCtrl">
+    <div class="jumbotron">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-6 col-xs-offset-3 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+            <h1>ToDo List App</h1>
+
+            <div>
+              <form ng-submit="newTodo()">
+                <input type="text" class="form-control input-lg" placeholder="¿Què has de fer?" ng-model="nTodo.title" />
+              </form>
+              <ul class="list-group">
+                <li ng-repeat="todo in todos" class="list-group-item clearfix">
+                  <span  class="v-center" data-toggle="tooltip" title="{{todo.data | date:'HH:mm:ss dd-MMMM-yy'}}" data-placement="top" ng-hide="updateMode">{{todo.title | capitalize }}</span>
+                  <form ng-show="updateMode" ng-submit="updateTodo(todo)">
+                    <input type="text" class="form-control" placeholder="Actualitza" ng-model="todo.title" />
+                  </form>
+                  <div class="pull-right">
+                    <a class="btn btn-info" href='' ng-click="updateMode=true" ng-hide="updateMode">Modificar</a> 
+                    <a class="btn btn-warning" href='' ng-click="updateMode=false" ng-show="updateMode">Cancel·lar</a>
+                    <a class="btn btn-danger" href='' ng-click="deleteTodo(todo._id)">Eliminar</a> 
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div> <!-- col -->
+        </div> <!-- row -->
+      </div> <!-- container -->
+    </div> <!-- jumbotron -->
+  </body>
+</html>

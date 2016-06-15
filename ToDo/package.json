@@ -1,0 +1,17 @@
+{
+  "name": "ToDo",
+  "version": "0.0.1",
+  "description": "A simple ToDo application",
+  "main": "server.js",
+  "dependencies": {
+    "express": "latest",
+    "body-parser" : "latest",
+    "mongoose" : "latest"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Roc Duran",
+  "license": "MIT"
+}
